@@ -1,0 +1,28 @@
+{% extends 'users/userbase.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+    /* Add any custom styles here */
+    .table {
+        margin: 20px auto;
+        width: 90%;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="table-responsive">
+                    {{ data|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

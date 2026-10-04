@@ -1,0 +1,28 @@
+{% extends 'users/userbase.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <br><br>
+        <div class="col-lg-10">
+            <div class="page-content" style="margin-top: -30px;">
+                <h3>Confusion Matrices:</h3>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-6">
+                        <h4>SVM Confusion Matrix:</h4>
+                        <img src="/media/SVM_confusion_matrix.png" alt="SVM Confusion Matrix" class="img-fluid">
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4>Naive Bayes Confusion Matrix:</h4>
+                        <img src="/media/Naive_Bayes_confusion_matrix.png" alt="Naive Bayes Confusion Matrix" class="img-fluid">
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'admins/AdminHome.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content">
+
+            
+                <!-- ***** Registered Users Start ***** -->
+                <div class="gaming-library mt-5">
+
+                    <div class="col-lg-12">
+                        <div class="heading-section">
+                            <center><h4><em>Registered</em> Users</h4></center>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped text-white">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="text-white">ID</th>
+                                        <th class="text-white">Username</th>
+                                        <th class="text-white">Email</th>
+                                        <th class="text-white">Address</th>
+                                        <th class="text-white">Status</th>
+                                        <th class="text-white">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in users %}
+                                    <tr>
+                                        <td class="text-white">{{ user.id }}</td>
+                                        <td class="text-white">{{ user.username }}</td>
+                                        <td class="text-white">{{ user.email }}</td>
+                                        <td class="text-white">{{ user.address }}</td>
+                                        <td class="text-white">
+                                            {% if user.is_active %}
+                                                Activated
+                                            {% else %}
+                                                Inactive
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if user.is_active %}
+                                                <a href="{% url 'user-deactivate' user.pk %}" class="btn btn-danger">Deactivate</a>
+                                            {% else %}
+                                                <a href="{% url 'user-activate' user.pk %}" class="btn btn-success">Activate</a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- ***** Registered Users End ***** -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

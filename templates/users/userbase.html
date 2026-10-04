@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Hate Speech Recognition</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <style>
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.3s ease;
+        }
+
+        .main-nav .nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .main-nav .logo h5 {
+            margin: 0;
+        }
+
+        .header-area.header-sticky {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+        }
+
+        body {
+            padding-top: 70px;
+        }
+
+        .scrolled .main-nav {
+            background-color: rgba(28, 225, 225, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'base' %}" class="logo">
+                            <h5>Hate Speech Recognition Using ML</h5>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{% url 'user-home' %}" class="active">Home</a></li>
+                            <li><a href="{% url 'task1' %}" id="training-button">Training</a></li>
+                            <li><a href="{% url 'matrix' %}">Matrices</a></li>
+                            <li><a href="{% url 'prediction' %}">Predict</a></li>
+                            <li><a href="{% url 'base' %}">Sign-out</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Scripts -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'assets/js/tabs.js' %}"></script>
+    <script src="{% static 'assets/js/popup.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script>
+        // Change navbar color on scroll
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('.header-area');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Warning message for training
+        document.getElementById('training-button').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default link action
+            var userConfirmed = confirm('Training the model may take up to 50 minutes. Do you want to continue?');
+            if (userConfirmed) {
+                window.location.href = this.href; // Continue to the link if confirmed
+            }
+        });
+    </script>
+
+</body>
+
+</html>
